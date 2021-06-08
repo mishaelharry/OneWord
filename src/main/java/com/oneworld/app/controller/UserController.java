@@ -55,7 +55,7 @@ public class UserController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<BaseResponse> updateUser(@PathVariable("id") String id, @Valid @RequestBody UserRequest userRequest) {
+    public ResponseEntity<BaseResponse> updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserRequest userRequest) {
         UserResponse userResponse = userService.updateUser(id, userRequest);
         if(userResponse != null){
             return new ResponseEntity(new BaseResponse(true, "User updated successfully", userResponse),
@@ -67,7 +67,7 @@ public class UserController {
     }
     
     @PutMapping("/verify/{id}")
-    public ResponseEntity<BaseResponse> verifyUser(@PathVariable("id") String id) {
+    public ResponseEntity<BaseResponse> verifyUser(@PathVariable("id") Long id) {
         UserResponse userResponse = userService.verifyUser(id);
         if(userResponse != null){
             return new ResponseEntity(new BaseResponse(true, "User verified successfully", userResponse),
@@ -79,13 +79,11 @@ public class UserController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<BaseResponse> deactivateUser(@PathVariable("id") String id) {
+    public ResponseEntity<BaseResponse> deactivateUser(@PathVariable("id") Long id) {
         userService.deactivateUser(id);
         return ResponseEntity.ok(new BaseResponse(true, "User deleted.",
                 null
         ));
     }
-    
-    
-    
+        
 }

@@ -5,10 +5,15 @@
  */
 package com.oneworld.app.repository;
 
+import com.oneworld.app.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author hp
  */
-public class UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
     
 }

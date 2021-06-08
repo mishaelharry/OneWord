@@ -58,7 +58,6 @@ public class User {
     @Column(name = "role")
     private String role;
     
-    @CreatedDate
     @Column(name="date_registered", nullable=false, updatable=false)
     private Instant dateRegistered;
     
@@ -68,7 +67,7 @@ public class User {
     @Column(name="date_verified")
     private Instant dateVerified;
     
-    @Column(name="date_verified")
+    @Column(name="date_deactivated")
     private Instant dateDeactivated;
     
     @Column(name = "status")
