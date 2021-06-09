@@ -89,7 +89,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<BaseResponse> deactivateUser(@PathVariable("id") Long id) {
         userService.deactivateUser(id);
-        return ResponseEntity.ok(new BaseResponse(true, "User deleted.",
+        return ResponseEntity.ok(new BaseResponse(true, "User deactivated.",
                 null
         ));
     }

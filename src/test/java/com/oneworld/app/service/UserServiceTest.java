@@ -65,7 +65,7 @@ public class UserServiceTest {
         
         Page<User> users = Page.empty();
      
-        given(userRepository.findAll(PageRequest.of(1, 100, Sort.Direction.DESC, "createdAt"))).willReturn(users);
+        given(userRepository.findAll(PageRequest.of(1, 100, Sort.Direction.DESC, "dateRegistered"))).willReturn(users);
 
         Mockito.when(userService.getUsers(1, 100)).thenReturn(userPagedResponse());
 

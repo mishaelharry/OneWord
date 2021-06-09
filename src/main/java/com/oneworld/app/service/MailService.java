@@ -35,6 +35,22 @@ public class MailService {
         sendByJavaMailer(emailRequest);
     }  
     
+    public void sendVerifiedMail(EmailRequest emailRequest){
+        Context context = new Context();
+        context.setVariables(emailRequest.getModel());
+        String htmlContent = htmlTemplateEngine.process("verified-user", context);
+        emailRequest.setMessage(htmlContent);
+        sendByJavaMailer(emailRequest);
+    }  
+    
+    public void sendDeactivateMail(EmailRequest emailRequest){
+        Context context = new Context();
+        context.setVariables(emailRequest.getModel());
+        String htmlContent = htmlTemplateEngine.process("deactivate-user", context);
+        emailRequest.setMessage(htmlContent);
+        sendByJavaMailer(emailRequest);
+    }  
+    
     @Async
     private void sendByJavaMailer(EmailRequest emailRequest){
         SimpleMailMessage mailMessage = new SimpleMailMessage();

@@ -43,21 +43,21 @@ public class UserService {
 
     @Autowired
     private MailService mailService;
-    
+
     @Value("${spring.mail.username}")
     private String fromMail;
-    
-    @Value("${app.reset.link}")
-    private String resetLink;    
 
-    public boolean existsByMobile(String mobile){
+    @Value("${app.reset.link}")
+    private String resetLink;
+
+    public boolean existsByMobile(String mobile) {
         return userRepository.existsByMobile(mobile);
     }
-    
-    public boolean existsByEmail(String email){
+
+    public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
-    
+
     public UserResponse addUser(UserRequest userRequest) {
         UserResponse userResponse = null;
         if (userRequest != null) {
@@ -76,9 +76,9 @@ public class UserService {
                 model.put("link", resetLink + result.getId());
                 EmailRequest emailRequest = new EmailRequest();
                 emailRequest.setTo(result.getEmail());
-                emailRequest.setFrom("mishaelharry@gmail.com");
+                emailRequest.setFrom(fromMail);
                 emailRequest.setSubject("Verify your Account");
-                emailRequest.setModel(model);                
+                emailRequest.setModel(model);
                 mailService.sendUserVerifyMail(emailRequest);
 
             }
@@ -88,7 +88,7 @@ public class UserService {
 
     public PagedResponse<UserResponse> getUsers(int page, int size) {
         validatePageNumberAndSize(page, size);
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "dateRegistered");
 
         Page<User> users = userRepository.findAll(pageable);
         if (users.getNumberOfElements() == 0) {
@@ -157,6 +157,15 @@ public class UserService {
             if (result != null) {
                 userResponse = new UserResponse();
                 BeanUtils.copyProperties(result, userResponse);
+
+                Map<String, Object> model = new HashMap<>();
+                model.put("first_name", result.getFirstName());
+                EmailRequest emailRequest = new EmailRequest();
+                emailRequest.setTo(result.getEmail());
+                emailRequest.setFrom(fromMail);
+                emailRequest.setSubject("Account Verified");
+                emailRequest.setModel(model);
+                mailService.sendVerifiedMail(emailRequest);
             }
         } else {
             new UserNotFoundException(id);
@@ -170,6 +179,14 @@ public class UserService {
             user.setStatus(DEACTIVATED);
             user.setDateDeactivated(Instant.now());
             userRepository.save(user);
+            Map<String, Object> model = new HashMap<>();
+            model.put("first_name", user.getFirstName());
+            EmailRequest emailRequest = new EmailRequest();
+            emailRequest.setTo(user.getEmail());
+            emailRequest.setFrom(fromMail);
+            emailRequest.setSubject("User Deactivated");
+            emailRequest.setModel(model);
+            mailService.sendDeactivateMail(emailRequest);
         } else {
             new UserNotFoundException(id);
         }
