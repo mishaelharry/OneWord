@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/71370fd936c7430ab1ee232522dfb6f8)](https://www.codacy.com/gh/mishaelharry/OneWord/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mishaelharry/OneWord&amp;utm_campaign=Badge_Grade)
 #OneWord Design
 
 Oneworld test was developed using the MVC design pattern is also known as Model-View-Controller. It is a common architectural pattern that is used to design and create interfaces and the structure of an application.
