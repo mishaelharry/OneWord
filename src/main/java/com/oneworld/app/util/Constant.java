@@ -18,5 +18,8 @@ public class Constant {
     public final static String REGISTERED = "REGISTERED";
     public final static String VERIFIED = "VERIFIED";
     public final static String DEACTIVATED = "DEACTIVATED";
+
+    public final static String USER_ROLE = "USER";
+    public final static String ADMIN_ROLE = "ADMIN";
     
 }

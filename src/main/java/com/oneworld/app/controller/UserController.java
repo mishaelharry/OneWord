@@ -37,6 +37,16 @@ public class UserController {
     
     @PostMapping
     public ResponseEntity<BaseResponse<UserResponse>> createUser(@Valid @RequestBody UserRequest userRequest){
+        if(userService.existsByMobile(userRequest.getMobile())){
+            return new ResponseEntity(new BaseResponse(false, "Mobile already exist", null),
+                    HttpStatus.OK);
+        }
+        
+        if(userService.existsByEmail(userRequest.getEmail())){
+            return new ResponseEntity(new BaseResponse(false, "Email already exist", null), 
+                    HttpStatus.OK);
+        }
+        
         UserResponse userResponse = userService.addUser(userRequest);
         if(userResponse != null){
             return new ResponseEntity(new BaseResponse(true, "User created successfully", userResponse),
@@ -66,15 +76,13 @@ public class UserController {
         }
     }
     
-    @PutMapping("/verify/{id}")
-    public ResponseEntity<BaseResponse> verifyUser(@PathVariable("id") Long id) {
+    @GetMapping("/verify/{id}")
+    public ResponseEntity<String> verifyUser(@PathVariable("id") Long id) {
         UserResponse userResponse = userService.verifyUser(id);
         if(userResponse != null){
-            return new ResponseEntity(new BaseResponse(true, "User verified successfully", userResponse),
-                    HttpStatus.OK);
+            return ResponseEntity.ok().body("User verified successfully");
         } else {
-            return new ResponseEntity(new BaseResponse(false, "Failed to verifed user", null),
-                    HttpStatus.OK);
+            return ResponseEntity.ok().body("Failed to verifed user");
         }
     }
     
