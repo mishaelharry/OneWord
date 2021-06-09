@@ -10,7 +10,7 @@ import com.oneworld.app.dto.UserRequest;
 import com.oneworld.app.dto.UserResponse;
 import com.oneworld.app.model.User;
 import com.oneworld.app.repository.UserRepository;
-import com.oneworld.app.util.Constant;
+import com.oneworld.app.util.Constants;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +99,7 @@ public class UserServiceTest {
         User user = new User();
         user.setId(1L);
         user.setFirstName("Mishael");
-        user.setStatus(Constant.VERIFIED);
+        user.setStatus(Constants.VERIFIED);
         
         given(userRepository.findById(user.getId())).willReturn(Optional.of(user));
         
@@ -115,7 +115,7 @@ public class UserServiceTest {
         User user = new User();
         user.setId(1L);
         user.setFirstName("Mishael");
-        user.setStatus(Constant.VERIFIED);
+        user.setStatus(Constants.VERIFIED);
         
         given(userRepository.findById(user.getId())).willReturn(Optional.of(user));
         
@@ -130,7 +130,7 @@ public class UserServiceTest {
         userRequest.setEmail("harry4sure@hotmail.com");
         userRequest.setMobile("09039639237");
         userRequest.setPassword("123456");
-        userRequest.setRole(Constant.REGISTERED);
+        userRequest.setRole(Constants.REGISTERED);
         return userRequest;
     }
     
@@ -142,8 +142,8 @@ public class UserServiceTest {
         userResponse.setLastName("Harry");
         userResponse.setEmail("harry4sure@hotmail.com");
         userResponse.setMobile("09039639237");
-        userResponse.setRole(Constant.USER_ROLE);
-        userResponse.setStatus(Constant.VERIFIED);
+        userResponse.setRole(Constants.USER_ROLE);
+        userResponse.setStatus(Constants.VERIFIED);
         userResponse.setDateDeactivated(Instant.now());
         userResponse.setDateRegistered(Instant.now());
         userResponse.setDateVerified(Instant.now());

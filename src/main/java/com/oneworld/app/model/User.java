@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  *

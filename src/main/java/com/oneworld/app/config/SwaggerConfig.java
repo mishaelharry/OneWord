@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.oneworld.app"))
-                .paths(regex("/api.*"))
+                //.paths(regex("/api.*"))
                 .build();
     }
     
@@ -46,12 +46,12 @@ public class SwaggerConfig {
                 .build();
     }
     
-    private Predicate<String> paths(){
+    /*private Predicate<String> paths(){
         return Predicates.and(
                 PathSelectors.regex("/.*"),
                 Predicates.not(PathSelectors.regex("/error.*"))        
         );
-    }
+    }*/
     
 }
 

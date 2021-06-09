@@ -11,7 +11,7 @@ import com.oneworld.app.dto.UserRequest;
 import com.oneworld.app.dto.UserResponse;
 import com.oneworld.app.exception.UserNotFoundException;
 import com.oneworld.app.service.UserService;
-import com.oneworld.app.util.Constant;
+import com.oneworld.app.util.Constants;
 import com.oneworld.app.util.JsonUtil;
 import java.time.Instant;
 import java.util.Arrays;
@@ -141,7 +141,7 @@ public class UserControllerTest {
         userRequest.setEmail("harry4sure@hotmail.com");
         userRequest.setMobile("09039639237");
         userRequest.setPassword("123456");
-        userRequest.setRole(Constant.USER_ROLE);
+        userRequest.setRole(Constants.USER_ROLE);
         return userRequest;
     }
     
@@ -153,7 +153,7 @@ public class UserControllerTest {
         userResponse.setLastName("Harry");
         userResponse.setEmail("harry4sure@hotmail.com");
         userResponse.setMobile("09039639237");
-        userResponse.setRole(Constant.REGISTERED);
+        userResponse.setRole(Constants.REGISTERED);
         userResponse.setDateDeactivated(Instant.now());
         userResponse.setDateRegistered(Instant.now());
         userResponse.setDateVerified(Instant.now());
