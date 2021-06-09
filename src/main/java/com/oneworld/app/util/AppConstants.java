@@ -9,7 +9,7 @@ package com.oneworld.app.util;
  *
  * @author hp
  */
-public class Constants {
+public class AppConstants {
     
     public final static int MAX_PAGE_SIZE = 2000;
     public final static String DEFAULT_PAGE_NUMBER = "0";
