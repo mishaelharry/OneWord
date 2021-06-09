@@ -13,7 +13,7 @@ http://localhost:7000/oneworld-service/swagger-ui.html
 # Endpoints
 1.  Create User
 URL: http://127.0.0.1:7000/oneworld-service/api/user<br>
-Method: GET <br>
+Method:GET<br>
 Request:
 {
     "title":"Mr",
@@ -27,18 +27,18 @@ Request:
 
 2.  Get User (Paged)
 URL: http://127.0.0.1:7000/oneworld-service/api/user?page=0&size=100 <br>
-Method: GET <br>
+Method:GET<br>
 
 3.  Update User
 URL: http://127.0.0.1:7000/oneworld-service/api/user/{id} <br>
-Method: PUT <br>
+Method:PUT<br>
 
 4.  Verify User
 URL: http://127.0.0.1:7000/oneworld-service/api/user/verify/{id}  <br>
-Method: GET <br>
+Method:GET<br>
 
 5.  Deactivate User
 URL: http://127.0.0.1:7000/oneworld-service/api/user/{id}  <br>
-Method: DELETE <br>
+Method:DELETE<br>
 
 

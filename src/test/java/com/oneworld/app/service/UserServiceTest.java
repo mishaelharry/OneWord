@@ -13,7 +13,6 @@ import com.oneworld.app.repository.UserRepository;
 import com.oneworld.app.util.AppConstants;
 import java.time.Instant;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,13 +21,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -51,9 +49,9 @@ public class UserServiceTest {
         User user = new User();
         user.setFirstName("Mishael");
         
-        Mockito.when(userRepository.save(ArgumentMatchers.any(User.class))).thenReturn(user);
+        when(userRepository.save(ArgumentMatchers.any(User.class))).thenReturn(user);
 
-        Mockito.when(userService.addUser(userRequest())).thenReturn(userResponse());
+        when(userService.addUser(userRequest())).thenReturn(userResponse());
         
         UserResponse expected = userService.addUser(userRequest());
 
@@ -67,7 +65,7 @@ public class UserServiceTest {
      
         given(userRepository.findAll(PageRequest.of(1, 100, Sort.Direction.DESC, "dateRegistered"))).willReturn(users);
 
-        Mockito.when(userService.getUsers(1, 100)).thenReturn(userPagedResponse());
+        when(userService.getUsers(1, 100)).thenReturn(userPagedResponse());
 
         PagedResponse<UserResponse> expected = userService.getUsers(1, 100);
         
@@ -86,7 +84,7 @@ public class UserServiceTest {
         
         given(userRepository.findById(user.getId())).willReturn(Optional.of(user));
         
-        Mockito.when(userService.updateUser(1L, userRequest())).thenReturn(userResponse());
+        when(userService.updateUser(1L, userRequest())).thenReturn(userResponse());
              
         UserResponse expected = userService.updateUser(user.getId(), userRequest());
         
@@ -103,7 +101,7 @@ public class UserServiceTest {
         
         given(userRepository.findById(user.getId())).willReturn(Optional.of(user));
         
-        Mockito.when(userService.verifyUser(1L)).thenReturn(userResponse());
+        when(userService.verifyUser(1L)).thenReturn(userResponse());
              
         UserResponse expected = userService.verifyUser(user.getId());
         
