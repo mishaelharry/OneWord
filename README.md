@@ -1,16 +1,16 @@
-# OneWord Design
+#OneWord Design
 
 Oneworld test was developed using the MVC design pattern is also known as Model-View-Controller. It is a common architectural pattern that is used to design and create interfaces and the structure of an application.
 This pattern divides the application into three parts that are dependent and connected to each other. These designs are used to distinguish the presentation of data from how the data is accepted from the user to the 
 data shown. These design patterns have become common in the use of web applications and for developing GUIs
 
-# Setup
+#Setup
 To run the application, kindly create a MySQL database name "oneworld_db"
 
 #Swagger
 http://localhost:7000/oneworld-service/swagger-ui.html
 
-# Endpoints
+#Endpoints
 1.  Create User
 URL: http://127.0.0.1:7000/oneworld-service/api/user<br>
 Method:GET<br>
@@ -34,11 +34,9 @@ URL: http://127.0.0.1:7000/oneworld-service/api/user/{id} <br>
 Method:PUT<br>
 
 4.  Verify User
-URL: http://127.0.0.1:7000/oneworld-service/api/user/verify/{id}  <br>
+URL: http://127.0.0.1:7000/oneworld-service/api/user/verify/{id}<br>
 Method:GET<br>
 
 5.  Deactivate User
-URL: http://127.0.0.1:7000/oneworld-service/api/user/{id}  <br>
+URL: http://127.0.0.1:7000/oneworld-service/api/user/{id}<br>
 Method:DELETE<br>
-
-
